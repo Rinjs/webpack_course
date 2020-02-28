@@ -1,0 +1,31 @@
+{
+  "name": "webpack_course",
+  "version": "1.0.0",
+  "description": "simple webpack project",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack --mode development",
+    "build": "webpack --mode production",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rinjs/webpack_course.git"
+  },
+  "keywords": [
+    "js",
+    "webpack"
+  ],
+  "author": "Vladislav <vladislavkorenik@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rinjs/webpack_course/issues"
+  },
+  "homepage": "https://github.com/Rinjs/webpack_course#readme",
+  "devDependencies": {
+    "clean-webpack-plugin": "^3.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "webpack": "^4.41.6",
+    "webpack-cli": "^3.3.11"
+  }
+}
