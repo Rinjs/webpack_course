@@ -1,3 +1,4 @@
+import * as $ from "jquery";
 import Post from "./Post";
 
 import Logo from "@assets/logo";
@@ -8,6 +9,9 @@ import "./styles/styles.css";
 
 const post = new Post(json.title, Logo);
 
+$("pre")
+  .addClass("code")
+  .html(post.toString());
+
 console.log("XML", xml);
 console.log("CSV", csv);
-console.log(post.toString());

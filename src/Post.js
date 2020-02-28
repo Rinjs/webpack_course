@@ -6,10 +6,14 @@ export default class Post {
   }
 
   toString() {
-    return JSON.stringify({
-      title: this.title,
-      date: this.date,
-      img: this.img
-    });
+    return JSON.stringify(
+      {
+        title: this.title,
+        date: this.date,
+        img: this.img
+      },
+      null,
+      2
+    );
   }
 }

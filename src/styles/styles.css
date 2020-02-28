@@ -7,7 +7,7 @@
 
 .container {
   margin: 0 auto;
-  max-width: 1200px;
+  max-width: 800px;
   padding: 2rem;
 }
 
@@ -21,4 +21,9 @@
   margin: 0 auto;
   width: 70px;
   height: 70px;
+}
+
+.code{
+  color: brown;
+  font-weight: bolder;
 }
