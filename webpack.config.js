@@ -18,5 +18,21 @@ module.exports = {
       template: "./index.html"
     }),
     new CleanWebpackPlugin()
-  ]
+  ],
+  module: {
+    rules: [
+      {
+        test: /\.css$/,
+        use: ["style-loader", "css-loader"]
+      },
+      {
+        test: /\.(png|svg|gif|jpg)$/,
+        use: ["file-loader"]
+      },
+      {
+        test: /\.(ttf|woff|woff2|eot)$/,
+        use: ["file-loader"]
+      }
+    ]
+  }
 };
