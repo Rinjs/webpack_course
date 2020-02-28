@@ -9,6 +9,25 @@ const TerserWebpackPlugin = require("terser-webpack-plugin");
 const isDev = process.env.NODE_ENV === "development";
 const isProd = !isDev;
 
+const cssLoaders = ext => {
+  const loaders = [
+    {
+      loader: MiniCssExtractPlugin.loader,
+      options: {
+        hrm: isDev,
+        reloadAll: true
+      }
+    },
+    "css-loader"
+  ];
+
+  if (ext) {
+    loaders.push(ext);
+  }
+
+  return loaders;
+};
+
 const optimization = () => {
   const configOptimization = {
     splitChunks: {
@@ -30,7 +49,7 @@ module.exports = {
   context: path.resolve(__dirname, "src"),
   mode: "development",
   entry: {
-    main: "./index.js",
+    main: ["@babel/polyfill", "./index.js"],
     analytics: "./analytics.js"
   },
   output: {
@@ -48,6 +67,7 @@ module.exports = {
     port: 4200,
     hot: isDev
   },
+  devtool: isDev ? "source-map" : "",
   plugins: [
     new HTMLWebpackPlugin({
       template: "./index.html",
@@ -70,16 +90,7 @@ module.exports = {
     rules: [
       {
         test: /\.css$/,
-        use: [
-          {
-            loader: MiniCssExtractPlugin.loader,
-            options: {
-              hrm: isDev,
-              reloadAll: true
-            }
-          },
-          "css-loader"
-        ]
+        use: cssLoaders()
       },
       {
         test: /\.(png|svg|gif|jpg)$/,
@@ -96,6 +107,16 @@ module.exports = {
       {
         test: /\.csv$/,
         use: ["csv-loader"]
+      },
+      {
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: {
+          loader: "babel-loader",
+          options: {
+            presets: ["@babel/preset-env"]
+          }
+        }
       }
     ]
   }
